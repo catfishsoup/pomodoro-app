@@ -63,28 +63,36 @@ const Timer = ({setTime, sbreak, lbreak, pomodoro}) => {
     }
   }
 
-const Setting = () => {
-
-  return (
-    <>
-    <button>Settings</button>
-    </>
-  )
-}
+const Input = ({clicked, submit}) => {
 
 
-const Input = ({setTime, clicked}) => {
+  const [input, setInput] = useState({
+    pomodoro: 1500,
+    short_break: 300,
+    long_break: 900
+  })
+
+  const handleInputChange = (e) => {
+      setInput({
+        ...input, [e.target.name] : e.target.value * 60, 
+      })
+  }
+
+
   if(clicked === true) {
     return (
     <>
     <form>
       <label>Pomodoro</label>
-      <input onChange={setTime} type="number" placeholder="Set time"/>
-      <label>Short Break</label>
-      <input onChange={setTime} type="number" placeholder="Set time"/>
-      <label>Long Break</label>
-      <input onChange={setTime} type="number" placeholder="Set time"/>
-      <button>Apply</button>
+      <input name="pomodoro" onChange={handleInputChange} type="number" placeholder="0"/> minutes 
+      
+       <label>Short Break</label>
+      <input name="short_break" onChange={handleInputChange} type="number" placeholder="0"/> minutes 
+
+       <label>Long Break</label>
+      <input name="long_break" onChange={handleInputChange} type="number" placeholder="0"/> minutes 
+
+      <button onClick={(e) => submit(e, input)} type="submit">Apply</button>
     </form>
       
     </>
@@ -105,9 +113,7 @@ const App = () => {
   const [currTab, setcurrTab] = useState(1)
 
   //Set Time based on user input 
-  // const setTime = useCallback((e) => {
-  //   setSeconds(e.target.value)
-  // }, [seconds]) 
+
 const toggleTime = useCallback((time, tab) => {
     setSeconds(time)
     setcurrTab(tab)
@@ -145,6 +151,15 @@ const clickSettings = () => {
   setClicked2(!clicked2)
 }
 
+const submitValue = (e, input) => {
+  e.preventDefault()
+  console.log(input.pomodoro)
+  setPomodoro(input.pomodoro)
+  setSeconds(input.pomodoro)
+  setlongBreak(input.long_break)
+  setshortBreak(input.short_break)
+}
+
   return (
     <>
     
@@ -152,7 +167,7 @@ const clickSettings = () => {
     <Switchtab currTab={currTab} minute={minute} digit={digit_second} seconds={seconds} setTime={toggleTime} sbreak={shortBreak} lbreak={longBreak} pomodoro={pomodoro}/>
     <button onClick={clickStart}>Start</button>
     <button onClick={clickSettings}>Settings</button>
-    <Input clicked={clicked2}/>
+    <Input clicked={clicked2} submit={submitValue}/>
     </>
   )
 }

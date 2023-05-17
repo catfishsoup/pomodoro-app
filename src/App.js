@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState, useRef} from 'react'
 import './App.scss'
-
+import click from './audio/click.mp3'
 const Display = ({minute, digit}) => {
 
   return (digit >= 10 ? <div className="clock-display">{minute}:{digit}</div> : <div className="clock-display">{minute}:0{digit}</div>)
@@ -115,10 +115,12 @@ const App = () => {
   const [currTab, setcurrTab] = useState(1)
 
   //Set Time based on user input 
+  const clickAudio = new Audio(click)
 
 const toggleTime = useCallback((time, tab) => {
     setSeconds(time)
     setcurrTab(tab)
+    clickAudio.play()
   }, [])
 
   //Time Count down
@@ -145,6 +147,7 @@ const clickStart = (e) => {
     e.target.textContent = "Pause"
   } else {e.target.textContent = "Start"}
   setClicked(!clicked)
+  clickAudio.play()
 }
 
 const clickSettings = () => {
@@ -162,7 +165,6 @@ const submitValue = (e, input) => {
   setshortBreak(input.short_break)
   setClicked2(false)
 }
-
   return (
 
     <div className="main">

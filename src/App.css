@@ -1,3 +1,88 @@
+* {
+  font-family: "Asap", sans-serif;
+  color: white;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: linear-gradient(90deg, rgb(238, 174, 202) 0%, rgb(233, 186, 148) 100%);
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.toggle-time li {
+  border: white 2px solid;
+  margin: 20px;
+  padding: 1em;
+  border-radius: 1em;
+  background: none;
+  color: white;
+  font-family: "Asap", sans-serif;
+  transition: 0.5s ease;
+  cursor: pointer;
+  list-style-type: none;
+  display: inline-block;
+}
+.toggle-time li:hover {
+  transform: translateY(-1px);
+  box-shadow: 5px 5px 2px 1px rgba(242, 230, 234, 0.4);
+}
+.toggle-time .toggle {
+  transform: translateY(-1px);
+  box-shadow: 5px 5px 2px 1px rgba(242, 230, 234, 0.4);
+}
+
+.clock-display {
+  font-size: 7rem;
+  margin: 0.5em;
+  text-align: center;
+  font-family: "Arvo", serif;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-direction: row;
+}
+
+.start-btn {
+  border: white 2px solid;
+  margin: 20px;
+  padding: 1em;
+  border-radius: 1em;
+  background: none;
+  color: white;
+  font-family: "Asap", sans-serif;
+  transition: 0.5s ease;
+  cursor: pointer;
+  font-size: 1rem;
+  display: inline;
+  width: 20ch;
+}
+.start-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 5px 5px 2px 1px rgba(242, 230, 234, 0.4);
+}
+
+.setting-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .active {
   display: block;
 }
@@ -5,3 +90,58 @@
 .not-active {
   display: none;
 }
+
+.setting-form {
+  position: absolute;
+  border-radius: 1em;
+  top: 0%;
+  padding: 1.5rem;
+  height: 20vh;
+  background-color: white;
+}
+.setting-form h2 {
+  font-size: 2rem;
+  color: black;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.setting-form h3 {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1rem;
+}
+.setting-form div {
+  display: inline-block;
+}
+.setting-form div label {
+  color: black;
+  margin: 0.5em;
+  display: block;
+  font-size: 0.8rem;
+}
+.setting-form div input {
+  padding: 15px;
+  background-color: #F3F3F3;
+  border: 1px solid white;
+  margin-right: 1em;
+  border-radius: 1em;
+  max-width: 15ch;
+  color: black;
+}
+.setting-form .apply-btn {
+  position: absolute;
+  top: 90%;
+  color: white;
+  background: #f28482;
+  left: 34%;
+  padding: 1rem;
+  border: none;
+  width: 20ch;
+  border-radius: 1em;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+/*# sourceMappingURL=App.css.map */
